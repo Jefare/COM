@@ -27,80 +27,12 @@
     </div>
     <div id="mainbox" class="container">
       <h1>政业科技 <i>- <a href="http://govae.com" class="btn"><sup>Powered by </sup><strong>GOVAE</strong></a></i></h1>
-      <div class="pull-right"><a href="/index.html">中文版本</a></div>
+      <div class="pull-right"><a href="/index.html">返回首页</a></div>
       <div class="box summary">
         <h5>Why have this mirror?</h5>
         <div class="content">
           <p>Due to network issues in China (you understand)，there are intermittent connection failures when accessing to <a href="http://rubygems.org" target="_blank">rubygems.org</a> and the files hosted on Amazon S3。That's why using <code>gem install rack</code> or <code>bundle install</code> might take forever with no response. (Try <code>gem install rails -V</code> to see the entire process.</p>
         </div>
-      </div>
-
-      <div class="box sync_info">
-        This is a complete mirror of rubygems.org, so you can use it to replace the official version. In order to make sure it is in sync with the official server, it is currently synchronized once every 15 minutes.<br />
-      </div>
-
-      <div class="box">
-        <h5>How do I use it?</h5>
-        <div class="highlight">
-          <pre><span class="nv">$ </span>gem sources --remove https://rubygems.org/
-<span class="nv">$ </span>gem sources -a https://ruby.taobao.org/
-<span class="nv">$ </span>gem sources -l
-*** CURRENT SOURCES ***
-
-https://ruby.taobao.org
-<span class="c"># Ensure it only has ruby.taobao.org</span>
-<span class="nv">$ </span>gem install rails</pre>
-        </div>
-
-        <h5>If you use a Gemfile</h5>
-        You can use bundle's<a href="http://bundler.io/v1.5/bundle_config.html#gem-source-mirrors">gem source mirror</a> command.
-        <div class="highlight">
-          <pre><span class="nv">$ </span>bundle config mirror.https://rubygems.org https://ruby.taobao.org</pre>
-        </div>
-
-        Then you don't need to change the source in your Gemfile.
-        <div class="highlight">
-          <pre><span class="n">source</span> <span class="s1">'https://rubygems.org/'</span>        <div class="highlight">
-          <pre><span class="n">source</span> <span class="s1">'https://ruby.taobao.org/'</span>
-<span class="n">gem</span> <span class="s1">'rails'</span><span class="p">,</span> <span class="s1">'4.1.0'</span>
-<span class="o">.</span><span class="n">.</span><span class="o">.</span></pre>
-        </div>
-      </div>
-
-      <div class="box ruby_list">
-        <h5>Ruby Source Code Mirror</h5>
-        <div id="other_links" style="margin-bottom:20px;">
-          <a href="/mirrors/ruby" class="btn">Ruby Source Code Download Mirror</a>
-        </div>
-        <p>This is a mirror of <a href="http://cache.ruby-lang.org" target="_blank">cache.ruby-lang.org</a> that can be used to speed up Ruby installations for people in China.</p>
-        <ul style="font-size:14px;margin:10px 40px 30px 40px;">
-          <li><a href="/mirrors/ruby/ruby-2.3.0.tar.gz">ruby-2.3.0.tar.gz</a></li>
-          <li><a href="/mirrors/ruby/2.2/ruby-2.2.4.tar.gz">ruby-2.2.4.tar.gz</a></li>
-          <li><a href="/mirrors/ruby/2.1/ruby-2.1.7.tar.gz">ruby-2.1.7.tar.gz</a></li>
-        </ul>
-        <p>Modify RVM to use this site as the download source to improve download speeds.</p>
-        <h6>For Mac</h6>
-        <div class="highlight"><pre><span class="nv">$ </span>sed -i .bak -E <span class="s1">'s!https?://cache.ruby-lang.org/pub/ruby!https://ruby.taobao.org/mirrors/ruby!'</span> <span class="nv">$rvm_path</span>/config/db</pre></div>
-        <h6>For Linux</h6>
-        <div class="highlight"><pre><span class="nv">$ </span>sed -i -E <span class="s1">'s!https?://cache.ruby-lang.org/pub/ruby!https://ruby.taobao.org/mirrors/ruby!'</span> <span class="nv">$rvm_path</span>/config/db</pre></div>
-      </div>
-
-      <div class="box">
-        <h5>Common questions</h5>
-        <ol>
-          <li>
-            <p>Q: Why can't my newly published gem be published using Taobao's mirror?</p>
-            <p>A: Since synchronization is only executed periodically, new gems might not be synchronized yet. You will need to wait a while before trying again.</p>
-          </li>
-          <li>
-            <p>Q: I've alread switched my sources to Taobao, but <code>bundle install</code> or <code>gem install xxx</code> are stuck for a long time. Why?</p>
-            <p>A: This is possibly an issue with your network, or the source for the gem is not correct. You can try <code>gem install xxx -V</code> and create a post on Ruby China with the details asking for support.</p>
-          </li>
-          <li>
-            <p>Q: When using <code>gem install xxx</code> why do I encounter this error: "Error fetching data: Errno::ETIMEDOUT: Operation timed out - connect(2)"?</p>
-            <p>A: Network issues caused requests to Taobao's server to reset the connection. When encountering this issue, please try to access the mirror from another computer to see if the issue is with Taobao's mirror, or with your environment. If after switching environments, you still encounter the issue, please create a post on Ruby China.</p>
-          </li>
-        </ol>
       </div>
     </div>
     <!-- tags -->
