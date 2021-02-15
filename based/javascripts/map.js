@@ -11,7 +11,7 @@
     function createMap(){
         var map = new BMap.Map("gmap");//在百度地图容器中创建一个地图
         var point = new BMap.Point(113.849049,22.906067);//定义一个中心点坐标
-        map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中
+        map.centerAndZoom(point,12);//设定地图的中心点和坐标并将地图显示在地图容器中
         window.map = map;//将map变量存储在全局
     }
     
@@ -37,7 +37,7 @@
     }
     
     //标注点数组
-    var markerArr = [{title:"政业科技",content:"我的备注。",point:"113.842878|22.884135",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"政业科技",content:"GOVAE",point:"113.842878|22.884135",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
          ];
     //创建marker
     function addMarker(){
@@ -89,7 +89,7 @@
     }
     //创建一个Icon
     function createIcon(json){
-        var icon = new BMap.Icon("https://jefare.com/based/images/favicon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
         return icon;
     }
     
