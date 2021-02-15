@@ -1,8 +1,29 @@
-  // 百度地图API功能
-  var map = new BMap.Map("gmap");    // 创建Map实例
-  map.centerAndZoom(new BMap.Point(113.844318,22.88408), 13);  // 初始化地图,设置中心点坐标和地图级别
-  map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-  var scaleCtrl = new BMapGL.ScaleControl();  // 添加比例尺控件
-  map.addControl(scaleCtrl);
-  var zoomCtrl = new BMapGL.ZoomControl();  // 添加比例尺控件
-  map.addControl(zoomCtrl);
+    //初始化地图对象，加载地图
+    var map = new AMap.Map('container', {
+        resizeEnable: true
+    });
+    var options = {
+        'showButton': true,//是否显示定位按钮
+		'buttonPosition': 'LB',//定位按钮的位置
+		/* LT LB RT RB */
+		'buttonOffset': new AMap.Pixel(10, 20),//定位按钮距离对应角落的距离
+		'showMarker': true,//是否显示定位点
+		'markerOptions':{//自定义定位点样式，同Marker的Options
+		  'offset': new AMap.Pixel(-18, -36),
+		  'content':'<img src="https://a.amap.com/jsapi_demos/static/resource/img/user.png" style="width:36px;height:36px"/>'
+		},
+		'showCircle': true,//是否显示定位精度圈
+		'circleOptions': {//定位精度圈的样式
+			'strokeColor': '#0093FF',
+			'noSelect': true,
+			'strokeOpacity': 0.5,
+			'strokeWeight': 1,
+			'fillColor': '#02B0FF',
+			'fillOpacity': 0.25
+		}
+    }
+    AMap.plugin(["AMap.Geolocation"], function() {
+        var geolocation = new AMap.Geolocation(options);
+        map.addControl(geolocation);
+        geolocation.getCurrentPosition()
+    });
