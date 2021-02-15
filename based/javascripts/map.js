@@ -1,5 +1,5 @@
     //初始化地图对象，加载地图
-    var map = new AMap.Map('container', {
+    var map = new AMap.Map('gmap', {
         resizeEnable: true
     });
     var options = {
