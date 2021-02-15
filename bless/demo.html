@@ -22,15 +22,20 @@
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
   </head>
   <body>
-    
-    <div class="alert-message">我们已经停止基于 HTTP 协议的镜像服务, 请在配置中使用 HTTPS 协议代替</div>
 
-      <div class="box sync_info">
-        这是一个完整 rubygems.org 镜像，你可以用此代替官方版本，同步频率目前为<span class="time">15分钟一次</span>以保证尽量与官方服务同步。<br />
-      </div>
+    <!-- tags -->
+    <div class="alert-message">        东莞政业科技有限公司足于大岭山，建于2015年，始于创新创业服务平台，致力成为具有影响力的企业顾问，为用户提供全方位的专业服务。<br />
+    </div>
+    <div id="mainbox" class="container">
+      <h1>政业科技 <i>- <a href="http://govae.com"><sup>Powered by </sup><strong>GOVAE</strong></a></i></h1>
 
       <div id="gMap"></div>
 
+        <h5><a href="http://govae.com">政业科技</a> | <a href="help.html">使用帮助</a> | <a href="policy.html">法律法规</a> | <a href="licenses.html">知识共享</a> | <a href="about.html">关于我们</a> | <a href="contact.html">联系我们</a></h5>
+
+    </div>
+    <!-- tags -->
+  
     <footer class="footer">
       <div class="container">
         <div class="pull-right">
@@ -40,21 +45,20 @@
         </div>
           <a href="https://zzlz.gsxt.gov.cn/businessCheck/verifKey.do?showType=p&serial=91441900325127931W-SAIC_SHOW_10000091441900325127931W1590521124134&signData=MEYCIQCa4ggR26Dgv9+ap7UOHIrJr0g+MVYW6uCn1n5rNzFLXgIhAMHz1SKrjPm/DdwxlArzHsPKCpoGiUwkwm6leUw1tz9b"><strong>东莞政业科技有限公司</strong></a>
       </div>
-    </footer>
   </body>
+  <script src="/based/javascripts/xeon.js"></script>
   <script type="text/javascript">
-
   // 百度地图API功能
-  var map = new BMap.Map("gmap");    // 创建Map实例
-  map.centerAndZoom(new BMap.Point(113.842841,22.883991), 11);  // 初始化地图,设置中心点坐标和地图级别
+  var map = new BMap.Map("gMap");    // 创建Map实例
+  map.centerAndZoom(new BMap.Point(113.842841,22.883991);  // 创建点坐标
+  map.centerAndZoom(point, 11);                 // 初始化地图，设置中心点坐标和地图级别
   //添加地图类型控件
-  map.addControl(new BMap.MapTypeControl({
-    mapTypes:[
-            BMAP_NORMAL_MAP,
-            BMAP_HYBRID_MAP
-        ]}));   
-  map.setCurrentCity("东莞");          // 设置地图显示的城市 此项是必须设置的
-  map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+  map.addControl(new BMap.NavigationControl());
+  map.addControl(new BMap.ScaleControl());
+  map.addControl(new BMap.OverviewMapControl());
+  map.addControl(new BMap.MapTypeControl());
+  var marker = new BMap.Marker(point);        // 创建标注
+  map.addOverlay(marker);                     // 将标注添加到地图中
   var infoWindow = new BMap.InfoWindow("<b class='iw_poi_title'>政业科技</b><div class='iw_poi_content'>热线：+86-13580-916-000<br>地址：广东省东莞市大岭山镇大塘村<br></div>"); // 创建信息窗口对象
   </script>
 </html>
