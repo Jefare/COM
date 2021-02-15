@@ -1,5 +1,5 @@
 body { padding: 10px; }
-#GOVAE{height:550px;width:780px;border:1px solid #ccc;}
+#GOVAE {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
 #mainbox { margin-top:10px; }
 .container { width: 100%;  max-width: 960px; }
 body {
