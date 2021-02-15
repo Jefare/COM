@@ -25,24 +25,11 @@
     
     <div class="alert-message">我们已经停止基于 HTTP 协议的镜像服务, 请在配置中使用 HTTPS 协议代替</div>
 
-    <div id="mainbox" class="container">
-      <h1>RubyGems 镜像 <i>- 淘宝网</i></h1>
-      <div class="pull-right"><a href="index_en.html">English</a></div>
-      <div class="box summary">
-        <h5>为什么有这个？</h5>
-        <div class="content">
-          <p>由于国内网络原因（你懂的），导致 <a href="http://rubygems.org" target="_blank">rubygems.org</a> 存放在 Amazon S3 上面的资源文件间歇性连接失败。所以你会与遇到 <code>gem install rack</code> 或 <code>bundle install</code> 的时候半天没有响应，具体可以用 <code>gem install rails -V</code> 来查看执行过程。</p>
-        </div>
-      </div>
-
       <div class="box sync_info">
         这是一个完整 rubygems.org 镜像，你可以用此代替官方版本，同步频率目前为<span class="time">15分钟一次</span>以保证尽量与官方服务同步。<br />
       </div>
 
-
-      <div id="map"></div>
-
-
+      <div id="gmap"></div>
 
     </div>
     <footer class="footer">
@@ -59,7 +46,7 @@
   <script type="text/javascript">
 
   // 百度地图API功能
-  var map = new BMap.Map("map");    // 创建Map实例
+  var map = new BMap.Map("gmap");    // 创建Map实例
   map.centerAndZoom(new BMap.Point(113.842841,22.883991), 11);  // 初始化地图,设置中心点坐标和地图级别
   //添加地图类型控件
   map.addControl(new BMap.MapTypeControl({
