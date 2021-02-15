@@ -1,17 +1,28 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
   <head>
-    <title>RubyGems 镜像 - 淘宝网</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="/bootstrap.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/master.css" type="text/css" media="screen">
-    <link rel="shortcut icon" href="/favicon.png" />
-    <meta name="apple-mobile-web-app-capable" content="no">
-    <meta content='True' name='HandheldFriendly' />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta name="keywords" content="Ruby Gems, Gem, RubyGems 中国, RubyGems 镜像, Gem 镜像" />
+    <title>政业科技</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="东莞, 大岭山, 社区, 农场, 领居, 矮岭冚, 白花洞, 大环, 大岭, 大片美, 大沙, 大塘, 大塘朗, 鸡翅岭, 金桔, 旧飞鹅, 连平, 马蹄岗, 梅林, 水朗, 太公岭, 下高田, 新塘, 杨屋, 颜屋, 元岭">
+    <meta name="description" content="用心创造价值！">
+    <meta name="author" content="乡下仔">
+    <meta name="robots" content="ALL">
+    <link rel="canonical" href="https://www.govae.com/">
+    <link rel="shortcut icon" type="image/x-icon" href="/based/images/favicon.ico">
+    <link rel="Bookmark" href="/based/images/favicon.png"/>
+    <link rel="apple-touch-icon" href="/based/images/favicon.png"/>
+    <link rel="stylesheet" href="/based/stylesheets/bootstrap.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/based/stylesheets/master.css" type="text/css" media="screen">
+    <script type="text/javascript" src="https//api.map.baidu.com/api?v=2.0&ak=AXqFI4MKsagWUxblpThEjujl9BElsSf3"></script>
   </head>
   <body>
+    
     <div class="alert-message">我们已经停止基于 HTTP 协议的镜像服务, 请在配置中使用 HTTPS 协议代替</div>
 
     <div id="mainbox" class="container">
@@ -23,6 +34,8 @@
           <p>由于国内网络原因（你懂的），导致 <a href="http://rubygems.org" target="_blank">rubygems.org</a> 存放在 Amazon S3 上面的资源文件间歇性连接失败。所以你会与遇到 <code>gem install rack</code> 或 <code>bundle install</code> 的时候半天没有响应，具体可以用 <code>gem install rails -V</code> 来查看执行过程。</p>
         </div>
       </div>
+
+<div id="allmap"></div>
 
       <div class="box sync_info">
         这是一个完整 rubygems.org 镜像，你可以用此代替官方版本，同步频率目前为<span class="time">15分钟一次</span>以保证尽量与官方服务同步。<br />
@@ -93,23 +106,27 @@ https://ruby.taobao.org
     <footer class="footer">
       <div class="container">
         <div class="pull-right">
-          <a href="http://taobao.com" target="_blank"><img src="///rubygems-china.oss.aliyuncs.com/public/T1ogqgXfXeXXXXXXXX-168-42.png" style="width:80px;" /></a>
+        <div id="other_links" style="margin-bottom:20px;">
+          <a href="http://govae.com" class="btn"><sup>Powered by </sup><strong>GOVAE</strong></a>
         </div>
-        服务由 <a href="http://taobao.com" target="_blank">阿里巴巴</a> 提供，Gem 文件托管在 <a href="http://oss.aliyun.com" target="_blank">阿里云 OSS</a>, 如遇到问题请到 <a href="https://github.com/alibaba/ruby.taobao.org/issues">这里</a> 提交一个 issue.
+        </div>
+          <a href="https://zzlz.gsxt.gov.cn/businessCheck/verifKey.do?showType=p&serial=91441900325127931W-SAIC_SHOW_10000091441900325127931W1590521124134&signData=MEYCIQCa4ggR26Dgv9+ap7UOHIrJr0g+MVYW6uCn1n5rNzFLXgIhAMHz1SKrjPm/DdwxlArzHsPKCpoGiUwkwm6leUw1tz9b"><strong>东莞政业科技有限公司</strong></a>
       </div>
     </footer>
   </body>
   <script type="text/javascript">
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-27931865-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+  // 百度地图API功能
+  var map = new BMap.Map("map");    // 创建Map实例
+  map.centerAndZoom(new BMap.Point(113.842841,22.883991), 11);  // 初始化地图,设置中心点坐标和地图级别
+  //添加地图类型控件
+  map.addControl(new BMap.MapTypeControl({
+    mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));   
+  map.setCurrentCity("东莞");          // 设置地图显示的城市 此项是必须设置的
+  map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 
   </script>
 </html>
