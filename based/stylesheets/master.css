@@ -6,10 +6,12 @@ body {
 }
 h1 { color:#c00; text-align: center; }
 h1 i { font-size: 15px; color: #333; font-style: normal;}
+h5 { color:#c00; text-align: center; }
 pre{margin:1em 0;font-size:12px;background-color:#eee;padding:8px;color:#444;overflow:auto;border:0px;}
 pre::-webkit-scrollbar{height:8px;width:8px;}
 pre code{padding:0!important;font-size:12px!important;background-color:#eee!important;border:none!important; display:inline-block; }
 code{font-size:12px!important;background-color:#f8f8ff!important;color:#444!important;padding:0 .2em!important;border:1px solid #dedede!important;}
+img {display: block;margin: 0 auto;}
 
 .box { margin-bottom:18px; }
 .box h5 { font-size:18px; margin-top:10px;  margin-bottom:10px; }
