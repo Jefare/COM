@@ -6,8 +6,8 @@ VGKBZ-IHAK6-YGKSR-MDDXM-O54BO-YRBN6
 
 #gmap {
     display: block;
-    width: 693px !important;
-    height: 231px !important;
+    width: 100% !important;
+    height: 100% !important;
     margin: 0 auto;
     -moz-box-shadow: 0 5px 20px #ccc;
     -webkit-box-shadow: 0 5px 20px #ccc;
