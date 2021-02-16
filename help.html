@@ -26,8 +26,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-
-	<body class="is-preload">
+	<body class="is-preload" onload="initMap()">
 
 		<!-- Header -->
 			<header id="header">
@@ -51,7 +50,7 @@
 
 							<!-- Image -->
 
-									<div class="gmap">正在加载地图...</div>
+									<div id="gmap"></div>
 
 									<h3>...</h3>
 									<p><span class="image right"><img src="images/pic3.jpg" alt="" /></span><a href="http://www.govae.com/">政业科技</a>是大岭山网的首要赞助商。<br /><a href="http://www.govae.com/">政业科技</a>为大岭山网提供了多种多样的资源，包括全职员工支持、基础设施硬件和带宽、社区活动经费、以及法律顾问等。</p>
@@ -91,7 +90,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="based/javascripts/xeon.js"></script>
-			<script src="based/javascripts/map.js"></script>
+			<script src="based/javascripts/gmap.js"></script>
 			<script src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
   </body>
 </html>
