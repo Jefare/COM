@@ -10,7 +10,7 @@
             var infoWindow = new TMap.InfoWindow({
                 map: map,
                 position: center,
-                content: "<div><img src='http://govae.com/based/images/right.png'><p>Powered by GOVAE</p></div>"
+                content: "<div><p>Powered by GOVAE</p><img src='http://govae.com/based/images/right.png'></div>"
             });
 
         }
