@@ -1,96 +1,53 @@
-
-    //创建和初始化地图函数：
-    function initMap(){
-        createMap();//创建地图
-        setMapEvent();//设置地图事件
-        addMapControl();//向地图添加控件
-        addMarker();//向地图中添加marker
-    }
-    
-    //创建地图函数：
-    function createMap(){
-        var map = new BMap.Map("gmap");//在百度地图容器中创建一个地图
-        var point = new BMap.Point(113.849049,22.906067);//定义一个中心点坐标
-        map.centerAndZoom(point,12);//设定地图的中心点和坐标并将地图显示在地图容器中
-        window.map = map;//将map变量存储在全局
-    }
-    
-    //地图事件设置函数：
-    function setMapEvent(){
-        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
-        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
-        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
-        map.enableKeyboard();//启用键盘上下左右键移动地图
-    }
-    
-    //地图控件添加函数：
-    function addMapControl(){
-        //向地图中添加缩放控件
-    var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_SMALL});
-    map.addControl(ctrl_nav);
-        //向地图中添加缩略图控件
-    var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:0});
-    map.addControl(ctrl_ove);
-        //向地图中添加比例尺控件
-    var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_TOP_RIGHT});
-    map.addControl(ctrl_sca);
-    }
-    
-    //标注点数组
-    var markerArr = [{title:"政业科技",content:"GOVAE",point:"113.842878|22.884135",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
-         ];
-    //创建marker
-    function addMarker(){
-        for(var i=0;i<markerArr.length;i++){
-            var json = markerArr[i];
-            var p0 = json.point.split("|")[0];
-            var p1 = json.point.split("|")[1];
-            var point = new BMap.Point(p0,p1);
-            var iconImg = createIcon(json.icon);
-            var marker = new BMap.Marker(point,{icon:iconImg});
-            var iw = createInfoWindow(i);
-            var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
-            marker.setLabel(label);
-            map.addOverlay(marker);
-            label.setStyle({
-                        borderColor:"#808080",
-                        color:"#333",
-                        cursor:"pointer"
-            });
-            
-            (function(){
-                var index = i;
-                var _iw = createInfoWindow(i);
-                var _marker = marker;
-                _marker.addEventListener("click",function(){
-                    this.openInfoWindow(_iw);
-                });
-                _iw.addEventListener("open",function(){
-                    _marker.getLabel().hide();
-                })
-                _iw.addEventListener("close",function(){
-                    _marker.getLabel().show();
-                })
-                label.addEventListener("click",function(){
-                    _marker.openInfoWindow(_iw);
-                })
-                if(!!json.isOpen){
-                    label.hide();
-                    _marker.openInfoWindow(_iw);
-                }
-            })()
-        }
-    }
-    //创建InfoWindow
-    function createInfoWindow(i){
-        var json = markerArr[i];
-        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
-        return iw;
-    }
-    //创建一个Icon
-    function createIcon(json){
-        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
-        return icon;
-    }
-    
-    initMap();//创建和初始化地图
+   !function(){
+     var infoWindow, map, level = 12,
+       center = {lng: 113.83643, lat: 22.878603},
+       features = [{"icon":"flg","color":"red","name":"政业科技","desc":"东莞政业科技有限公司","lnglat":{"Q":22.878227827482444,"R":113.83642963439229,"lng":113.83643,"lat":22.878228},"offset":{"x":-9,"y":-31},"type":"Marker"}];
+ 
+     function loadFeatures(){
+       for(var feature, data, i = 0, len = features.length, j, jl, path; i < len; i++){
+         data = features[i];
+         switch(data.type){
+           case "Marker":
+             feature = new AMap.Marker({ map: map, position: new AMap.LngLat(data.lnglat.lng, data.lnglat.lat),
+               zIndex: 3, extData: data, offset: new AMap.Pixel(data.offset.x, data.offset.y), title: data.name,
+               content: '<div class="icon icon-' + data.icon + ' icon-'+ data.icon +'-' + data.color +'"></div>' });
+             break;
+           case "Polyline":
+            for(j = 0, jl = data.path.length, path = []; j < jl; j++){
+                            path.push(new AMap.LngLat(data.path[j].lng, data.path[j].lat));
+                        }
+             feature = new AMap.Polyline({ map: map, path: path, extData: data, zIndex: 2,
+               strokeWeight: data.strokeWeight, strokeColor: data.strokeColor, strokeOpacity: data.strokeOpacity });
+             break;
+           case "Polygon":
+             for(j = 0, jl = data.path.length, path = []; j < jl; j++){
+               path.push(new AMap.LngLat(data.path[j].lng, data.path[j].lat));
+             }
+             feature = new AMap.Polygon({ map: map, path: path, extData: data, zIndex: 1,
+               strokeWeight: data.strokeWeight, strokeColor: data.strokeColor, strokeOpacity: data.strokeOpacity,
+               fillColor: data.fillColor, fillOpacity: data.fillOpacity });
+             break;
+           default: feature = null;
+         }
+         if(feature){ AMap.event.addListener(feature, "click", mapFeatureClick); }
+       }
+     }
+ 
+     function mapFeatureClick(e){
+       if(!infoWindow){ infoWindow = new AMap.InfoWindow({autoMove: true,isCustom: false}); }
+       var extData = e.target.getExtData();
+       infoWindow.setContent("<div class='myinfowindow'><h5>" + extData.name + "</h5><div>" + extData.desc + "</div></div>");
+       infoWindow.open(map, e.lnglat);
+     }
+ 
+     map = new AMap.Map("gmap", {center: new AMap.LngLat(center.lng, center.lat), level: level, keyboardEnable:true, dragEnable:true, scrollWheel:true, doubleClickZoom:true});
+     new AMap.TileLayer.Traffic({map: map, zIndex: 3});
+     loadFeatures();
+ 
+     map.on('complete', function(){
+       map.plugin(["AMap.ToolBar", "AMap.OverView", "AMap.Scale"], function(){
+         map.addControl(new AMap.ToolBar({ruler: false, direction: false, locate: false})); map.addControl(new AMap.OverView({isOpen: false})); map.addControl(new AMap.Scale);
+       });  
+     })
+     
+    }();
